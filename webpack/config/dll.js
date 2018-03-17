@@ -7,10 +7,11 @@ const vendor = require('../vendors');
 module.exports = {
     ...webpackConfig,
     entry: { vendor },
+    mode: 'development',
     output: {
         filename: '[name].[chunkhash].js',
         library: '[name]',
-        path: path.resolve(__dirname, '..', '..', 'dist')
+        path: path.resolve(__dirname, '..', 'vendor-scripts')
     },
     plugins: [
         new webpack.DllPlugin({

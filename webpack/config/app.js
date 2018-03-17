@@ -2,17 +2,19 @@
 
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 const webpackConfig = require('./common');
 const path = require('path');
 
 module.exports = {
     ...webpackConfig,
+    mode: 'production',
     entry: {
-        app: [
-            'react-hot-loader/patch',
-            './src/index.js'
-        ]
+        app: './src/index.js'
+    },
+    optimization: {
+        splitChunks: {
+            chunks: 'initial'
+        }
     },
     output: {
         filename: '[name].[chunkhash].js',
@@ -20,10 +22,6 @@ module.exports = {
         publicPath: '/react-webpack-boilerplate/dist/'
     },
     plugins: [
-        new webpack.NamedModulesPlugin(),
-        new UglifyJSPlugin({
-            parallel: true
-        }),
         new HtmlWebpackPlugin({
             template: path.resolve(__dirname, '..', '..', 'src', 'index.html')
         }),
