@@ -3,11 +3,16 @@
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const AddAssetsHtmlPlugin = require('add-asset-html-webpack-plugin');
+const merge = require('webpack-merge');
 const webpackConfig = require('./common');
 const path = require('path');
 
+const loaderConfig = [{
+    test: /\.scss/,
+    use: ['style-loader']
+}];
+
 module.exports = {
-    ...webpackConfig,
     mode: 'development',
     devtool: 'source-map',
     devServer: {
@@ -20,6 +25,7 @@ module.exports = {
             './src/index.js'
         ]
     },
+    module: merge.smart({ rules: loaderConfig }, webpackConfig.module),
     output: {
         filename: '[name].js',
         path: path.resolve(__dirname, '..', '..', 'dist'),
