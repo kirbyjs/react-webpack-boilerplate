@@ -4,20 +4,14 @@ const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const webpackConfig = require('./common');
-const merge = require('webpack-merge');
 const path = require('path');
 
-const loaderConfig = [{
-    test: /\.scss/,
-    use: [MiniCssExtractPlugin.loader]
-}];
-
 module.exports = {
+    ...webpackConfig,
     mode: 'production',
     entry: {
         app: './src/index.js'
     },
-    module: merge.smart({ rules: loaderConfig }, webpackConfig.module),
     optimization: {
         splitChunks: {
             chunks: 'initial'
@@ -30,7 +24,7 @@ module.exports = {
     },
     plugins: [
         new MiniCssExtractPlugin({
-            filename: '[name].[chunkhash].css' // change to [contenthash] when available
+            filename: '[name].[contenthash].css'
         }),
         new HtmlWebpackPlugin({
             template: path.resolve(__dirname, '..', '..', 'src', 'index.html')

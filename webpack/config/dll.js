@@ -8,6 +8,7 @@ module.exports = {
     ...webpackConfig,
     entry: { vendor },
     mode: 'development',
+    devtool: 'source-map',
     output: {
         filename: '[name].[chunkhash].js',
         library: '[name]',
