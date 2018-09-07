@@ -1,8 +1,6 @@
 // Created by kirby15 on 2/1/18.
 
-const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const webpackConfig = require('./common');
 const path = require('path');
 
@@ -23,14 +21,8 @@ module.exports = {
         publicPath: '/react-webpack-boilerplate/dist/'
     },
     plugins: [
-        new MiniCssExtractPlugin({
-            filename: '[name].[contenthash].css'
-        }),
         new HtmlWebpackPlugin({
             template: path.resolve(__dirname, '..', '..', 'src', 'index.html')
-        }),
-        new webpack.DefinePlugin({
-            'process.env.NODE_ENV': JSON.stringify('production')
         })
     ]
 };

@@ -26,7 +26,6 @@ module.exports = {
         publicPath: '/'
     },
     plugins: [
-        new webpack.NamedModulesPlugin(),
         new webpack.DllReferencePlugin({
             manifest: path.resolve(__dirname, '..', 'manifest', 'vendor.json')
         }),

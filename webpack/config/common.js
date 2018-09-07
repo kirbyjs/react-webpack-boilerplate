@@ -1,8 +1,10 @@
 // Created by kirby15 on 2/1/18.
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+
+const autoprefixer = require('autoprefixer');
 
 const isProduction = process.env.NODE_ENV === 'production';
 const scssCommonLoaders = [
+    'style-loader',
     {
         loader: 'css-loader',
         options: {
@@ -13,21 +15,20 @@ const scssCommonLoaders = [
     {
         loader: 'sass-loader',
         options: { sourceMap: !isProduction }
+    },
+    {
+        loader: 'postcss-loader',
+        options: {
+            plugins: [autoprefixer({ browsers: 'last 2 versions' })]
+        }
     }
 ];
-
-if (isProduction) {
-    scssCommonLoaders.splice(0, 0, MiniCssExtractPlugin.loader);
-    scssCommonLoaders.splice(2, 0, 'postcss-loader');
-} else {
-    scssCommonLoaders.splice(0, 0, 'style-loader');
-}
 
 module.exports = {
     module: {
         rules: [
             {
-                test: /\.m?js/,
+                test: /\.js/,
                 exclude: /node_modules/,
                 use: 'babel-loader'
             },
