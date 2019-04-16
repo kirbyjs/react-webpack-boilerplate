@@ -1,14 +1,20 @@
 // Created by kirby15 on 2/1/18.
 
 const autoprefixer = require('autoprefixer');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 const isProduction = process.env.NODE_ENV === 'production';
 const scssCommonLoaders = [
-    'style-loader',
+    {
+        loader: MiniCssExtractPlugin.loader,
+        options: {
+            hmr: !isProduction,
+            reloadAll: !isProduction
+        }
+    },
     {
         loader: 'css-loader',
         options: {
-            minimize: isProduction,
             sourceMap: !isProduction
         }
     },

@@ -3,8 +3,9 @@
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const AddAssetsHtmlPlugin = require('add-asset-html-webpack-plugin');
-const webpackConfig = require('./common');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const path = require('path');
+const webpackConfig = require('./common');
 
 module.exports = {
     ...webpackConfig,
@@ -34,6 +35,9 @@ module.exports = {
         }),
         new AddAssetsHtmlPlugin({
             filepath: path.resolve(__dirname, '..', 'vendor-scripts', 'vendor.*.js')
+        }),
+        new MiniCssExtractPlugin({
+            filename: '[name].css'
         })
     ]
 };
