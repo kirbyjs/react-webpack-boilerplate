@@ -18,8 +18,8 @@
     "url": "git+https://github.com/kirbyjs/react-webpack-boilerplate.git"
   },
   "dependencies": {
-    "react": "^16.2.0",
-    "react-dom": "^16.2.0",
+    "react": "^17.0.0",
+    "react-dom": "^17.0.0",
     "react-hot-loader": "^4.0.0"
   },
   "devDependencies": {
