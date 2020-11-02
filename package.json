@@ -39,7 +39,7 @@
     "eslint-plugin-react": "^7.6.1",
     "html-webpack-plugin": "^4.0.4",
     "mini-css-extract-plugin": "^1.0.0",
-    "node-sass": "^4.13.0",
+    "node-sass": "^5.0.0",
     "npm-run-all": "^4.1.2",
     "optimize-css-assets-webpack-plugin": "^5.0.1",
     "postcss-loader": "^4.0.0",
